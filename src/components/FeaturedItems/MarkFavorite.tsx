@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'react';
+import type { MouseEvent } from "react";
 import { httpPatch } from '../../lib/http';
 import type { ResourceType } from '../../lib/resource-progress';
 import { isLoggedIn } from '../../lib/jwt';
 import { showLoginPopup } from '../../lib/popup';
 import { FavoriteIcon } from './FavoriteIcon';
 import { Spinner } from '../ReactIcons/Spinner';
+import { useToast } from '../../hooks/use-toast';
 
 type MarkFavoriteType = {
   resourceType: ResourceType;
@@ -19,14 +21,16 @@ export function MarkFavorite({
   favorite,
   className,
 }: MarkFavoriteType) {
+  const isAuthenticated = isLoggedIn();
   const localStorageKey = `${resourceType}-${resourceId}-favorite`;
 
+  const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isFavorite, setIsFavorite] = useState(
-    favorite ?? localStorage.getItem(localStorageKey) === '1'
+      isAuthenticated ? (favorite ?? localStorage.getItem(localStorageKey) === '1') : false
   );
 
-  async function toggleFavoriteHandler(e: Event) {
+  async function toggleFavoriteHandler(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (!isLoggedIn()) {
       showLoginPopup();
@@ -49,7 +53,8 @@ export function MarkFavorite({
 
     if (error) {
       setIsLoading(false);
-      return alert('Failed to update favorite status');
+      toast.error('Failed to update favorite status');
+      return;
     }
 
     // Dispatching an event instead of setting the state because
@@ -91,6 +96,7 @@ export function MarkFavorite({
 
   return (
     <button
+      aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
       onClick={toggleFavoriteHandler}
       tabIndex={-1}
       className={`${isFavorite ? '' : 'opacity-30 hover:opacity-100'} ${

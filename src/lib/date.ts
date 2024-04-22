@@ -26,5 +26,23 @@ export function getRelativeTimeString(date: string): string {
     relativeTime = rtf.format(-diffInDays, 'day');
   }
 
+  if (relativeTime === 'this minute') {
+    return 'just now';
+  }
+
   return relativeTime;
+}
+
+export function formatMonthDate(date: string): string {
+  return new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+export function formatActivityDate(date: string): string {
+  return new Date(date).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+  });
 }
