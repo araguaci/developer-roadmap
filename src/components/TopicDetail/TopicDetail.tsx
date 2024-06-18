@@ -40,12 +40,15 @@ type TopicDetailProps = {
 };
 
 const linkTypes: Record<AllowedLinkTypes, string> = {
-  article: 'bg-yellow-200',
-  course: 'bg-green-200',
-  opensource: 'bg-blue-200',
-  podcast: 'bg-purple-200',
-  video: 'bg-pink-200',
-  website: 'bg-red-200',
+  article: 'bg-yellow-300',
+  course: 'bg-green-400',
+  opensource: 'bg-black text-white',
+  'roadmap.sh': 'bg-black text-white',
+  roadmap: 'bg-black text-white',
+  podcast: 'bg-purple-300',
+  video: 'bg-purple-300',
+  website: 'bg-blue-300',
+  official: 'bg-blue-600 text-white',
 };
 
 export function TopicDetail(props: TopicDetailProps) {
@@ -165,9 +168,8 @@ export function TopicDetail(props: TopicDetailProps) {
         }
         let topicHtml = '';
         if (!isCustomResource) {
-          topicHtml = response as string;
           const topicDom = new DOMParser().parseFromString(
-            topicHtml,
+            response as string,
             'text/html',
           );
 
@@ -177,9 +179,61 @@ export function TopicDetail(props: TopicDetailProps) {
           const contributionUrl = urlElem?.dataset?.githubUrl || '';
 
           const titleElem: HTMLElement = topicDom.querySelector('h1')!;
-
           const otherElems = topicDom.querySelectorAll('body > *:not(h1, div)');
 
+          let ulWithLinks: HTMLUListElement = document.createElement('ul');
+
+          // we need to remove the `ul` with just links (i.e. resource links)
+          // and show them separately.
+          topicDom.querySelectorAll('ul').forEach((ul) => {
+            const lisWithJustLinks = Array.from(
+              ul.querySelectorAll('li'),
+            ).filter((li) => {
+              return (
+                li.children.length === 1 &&
+                li.children[0].tagName === 'A' &&
+                li.children[0].textContent === li.textContent
+              );
+            });
+
+            if (lisWithJustLinks.length > 0) {
+              ulWithLinks = ul;
+            }
+          });
+
+          const listLinks = Array.from(ulWithLinks.querySelectorAll('li > a'))
+            .map((link, counter) => {
+              const typePattern = /@([a-z.]+)@/;
+              let linkText = link.textContent || '';
+              const linkHref = link.getAttribute('href') || '';
+              const linkType = linkText.match(typePattern)?.[1] || 'article';
+
+              linkText = linkText.replace(typePattern, '');
+
+              return {
+                id: `link-${linkHref}-${counter}`,
+                title: linkText,
+                url: linkHref,
+                type: linkType as AllowedLinkTypes,
+              };
+            })
+            .sort((a, b) => {
+              // official at the top
+              // opensource at second
+              // article at third
+              // videos at fourth
+              // rest at last
+              const order = ['official', 'opensource', 'article', 'video'];
+              return order.indexOf(a.type) - order.indexOf(b.type);
+            });
+
+          if (ulWithLinks) {
+            ulWithLinks.remove();
+          }
+
+          topicHtml = topicDom.body.innerHTML;
+
+          setLinks(listLinks);
           setHasContent(otherElems.length > 0);
           setContributionUrl(contributionUrl);
           setHasEnoughLinks(links.length >= 3);
@@ -311,7 +365,7 @@ export function TopicDetail(props: TopicDetailProps) {
                         className="flex w-full items-center justify-center rounded-md bg-gray-800 p-2 text-sm text-white transition-colors hover:bg-black hover:text-white disabled:bg-green-200 disabled:text-black"
                       >
                         <GitHubIcon className="mr-2 inline-block h-4 w-4 text-white" />
-                        Edit this Content
+                        Add Learning Resources
                       </a>
                     </div>
                   )}
@@ -322,20 +376,28 @@ export function TopicDetail(props: TopicDetailProps) {
                 <ul className="mt-6 space-y-1">
                   {links.map((link) => {
                     return (
-                      <li>
+                      <li key={link.id}>
                         <a
                           href={link.url}
                           target="_blank"
-                          className="font-medium underline"
+                          className="group font-medium text-gray-800 underline underline-offset-1 hover:text-black"
                         >
                           <span
                             className={cn(
-                              'mr-2 inline-block rounded px-1.5 py-1 text-xs uppercase no-underline',
-                              linkTypes[link.type],
+                              'mr-2 inline-block rounded px-1.5 py-0.5 text-xs uppercase no-underline',
+                              link.type in linkTypes
+                                ? linkTypes[link.type]
+                                : 'bg-gray-200',
                             )}
                           >
-                            {link.type.charAt(0).toUpperCase() +
-                              link.type.slice(1)}
+                            {link.type === 'opensource' ? (
+                              <>
+                                {link.url.includes('github') && 'GitHub'}
+                                {link.url.includes('gitlab') && 'GitLab'}
+                              </>
+                            ) : (
+                              link.type
+                            )}
                           </span>
                           {link.title}
                         </a>
@@ -347,7 +409,7 @@ export function TopicDetail(props: TopicDetailProps) {
 
               {/* Contribution */}
               {canSubmitContribution && !hasEnoughLinks && contributionUrl && (
-                <div className="mb-12 mt-3 border-t text-sm text-gray-400">
+                <div className="mb-12 mt-3 border-t text-sm text-gray-400 sm:mt-12">
                   <div className="mb-4 mt-3">
                     <p className="">
                       Find more resources using these pre-filled search queries:
@@ -383,7 +445,7 @@ export function TopicDetail(props: TopicDetailProps) {
                     className="flex w-full items-center justify-center rounded-md bg-gray-800 p-2 text-sm text-white transition-colors hover:bg-black hover:text-white disabled:bg-green-200 disabled:text-black"
                   >
                     <GitHubIcon className="mr-2 inline-block h-4 w-4 text-white" />
-                    Edit this Content
+                    Add Learning Resources
                   </a>
                 </div>
               )}
