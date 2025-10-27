@@ -1,11 +1,10 @@
 # Basic authentication
 
-Given the name "Basic Authentication", you should not confuse Basic Authentication with the standard username and password authentication. Basic authentication is a part of the HTTP specification, and the details can be [found in the RFC7617](https://www.rfc-editor.org/rfc/rfc7617.html).
-
-Because it is a part of the HTTP specifications, all the browsers have native support for "HTTP Basic Authentication".
+Basic Authentication sends base64-encoded username:password in HTTP headers. Simple to implement but insecure since base64 is easily decoded. Should only be used over HTTPS for credential protection. Best for low-risk scenarios or fallback mechanisms.
 
 Visit the following resources to learn more:
 
-- [@roadmap.sh@HTTP Basic Authentication](https://roadmap.sh/guides/http-basic-authentication)
+- [@article@HTTP Basic Authentication](https://roadmap.sh/guides/http-basic-authentication)
+- [@video@Basic Authentication in 5 minutes](https://www.youtube.com/watch?v=rhi1eIjSbvk)
 - [@video@Illustrated HTTP Basic Authentication](https://www.youtube.com/watch?v=mwccHwUn7Gc)
 - [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)

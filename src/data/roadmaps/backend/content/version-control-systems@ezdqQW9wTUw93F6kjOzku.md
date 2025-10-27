@@ -1,8 +1,10 @@
 # Version Control Systems
 
-Version control/source control systems allow developers to track and control changes to code over time. These services often include the ability to make atomic revisions to code, branch/fork off of specific points, and to compare versions of code. They are useful in determining the who, what, when, and why code changes were made.
+Version Control Systems (VCS) manage and track code changes over time, enabling efficient collaboration. Record file changes, allow reverting to previous versions, and maintain modification history. Can be centralized (Subversion) or distributed (Git, Mercurial) for collaboration and code integrity.
 
 Visit the following resources to learn more:
 
-- [@article@Git](https://git-scm.com/)
+- [@roadmap@Visit Dedicated Git & GitHub Roadmap](https://roadmap.sh/git-github)
+- [@official@Git Documentation](https://git-scm.com/doc)
 - [@article@What is Version Control?](https://www.atlassian.com/git/tutorials/what-is-version-control)
+- [@video@Version Control System (VCS) - Everything you need to know](https://www.youtube.com/watch?v=SVkuliabq4g)

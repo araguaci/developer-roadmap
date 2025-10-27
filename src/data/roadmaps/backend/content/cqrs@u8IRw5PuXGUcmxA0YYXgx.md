@@ -1,7 +1,8 @@
 # CQRS
 
-CQRS, or command query responsibility segregation, defines an architectural pattern where the main focus is to separate the approach of reading and writing operations for a data store. CQRS can also be used along with Event Sourcing pattern in order to persist application state as an ordered of sequence events, making it possible to restore data to any point in time.
+CQRS (Command Query Responsibility Segregation) separates read and write operations for data stores. Commands handle modifications, queries handle retrieval. Allows independent scaling and optimization of read/write sides, improving performance in complex systems but adding complexity.
 
 Visit the following resources to learn more:
 
 - [@article@CQRS Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+- [@video@Learn CQRS Pattern in 5 minutes!](https://www.youtube.com/watch?v=eiut3FIY1Cg)

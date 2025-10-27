@@ -1,15 +1,9 @@
 # Backpressure
 
-Backpressure is a design pattern that is used to manage the flow of data through a system, particularly in situations where the rate of data production exceeds the rate of data consumption. It is commonly used in cloud computing environments to prevent overloading of resources and to ensure that data is processed in a timely and efficient manner.
-
-There are several ways to implement backpressure in a cloud environment:
-
-- Buffering: This involves storing incoming data in a buffer until it can be processed, allowing the system to continue receiving data even if it is temporarily unable to process it.
-- Batching: This involves grouping incoming data into batches and processing the batches in sequence, rather than processing each piece of data individually.
-- Flow control: This involves using mechanisms such as flow control signals or windowing to regulate the rate at which data is transmitted between systems.
-
-Backpressure is an important aspect of cloud design, as it helps to ensure that data is processed efficiently and that the system remains stable and available. It is often used in conjunction with other design patterns, such as auto-scaling and load balancing, to provide a scalable and resilient cloud environment.
+Backpressure is a flow control mechanism where receivers signal their capacity to senders, preventing system overload. It manages resource allocation, prevents memory overflows, and maintains responsiveness in reactive programming, message queues, and streaming systems.
 
 Visit the following resources to learn more:
 
 - [@article@Awesome Architecture: Backpressure](https://awesome-architecture.com/back-pressure/)
+- [@article@Backpressure explained — The Resisted Flow of Data through Software](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7)
+- [@video@What is Back Pressure](https://www.youtube.com/watch?v=viTGm_cV7lE)

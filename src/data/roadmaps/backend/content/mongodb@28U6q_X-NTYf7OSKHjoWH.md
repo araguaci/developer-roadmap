@@ -1,13 +1,11 @@
 # MongoDB
 
-MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL).
+MongoDB is a NoSQL document-oriented database storing data in BSON format without fixed schemas. Supports horizontal scaling via sharding and high availability through replica sets. Ideal for applications with evolving data structures, real-time analytics, and large-scale data handling.
 
 Visit the following resources to learn more:
 
-- [@roadmap@Visit Dedicated MongoDB Roadmap](/mongodb)
-- [@article@MongoDB Website](https://www.mongodb.com/)
-- [@article@MongoDB Documentation](https://docs.mongodb.com/)
+- [@roadmap@Visit Dedicated MongoDB Roadmap](https://roadmap.sh/mongodb)
+- [@official@MongoDB Website](https://www.mongodb.com/)
+- [@official@Learning Path for MongoDB Developers](https://learn.mongodb.com/catalog)
 - [@article@MongoDB Online Sandbox](https://mongoplayground.net/)
-- [@article@Learning Path for MongoDB Developers](https://learn.mongodb.com/catalog)
-- [@article@Dynamo DB Docs](https://docs.aws.amazon.com/dynamodb/index.html)
-- [@article@Official Developers Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [@feed@daily.dev MongoDB Feed](https://app.daily.dev/tags/mongodb)

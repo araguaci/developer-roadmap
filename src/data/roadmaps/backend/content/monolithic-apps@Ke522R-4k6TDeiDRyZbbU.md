@@ -1,10 +1,9 @@
 # Monolithic Apps
 
-Monolithic architecture is a pattern in which an application handles requests, executes business logic, interacts with the database, and creates the HTML for the front end. In simpler terms, this one application does many things. It's inner components are highly coupled and deployed as one unit.
-
-It is recommended to build simple applications as a monolith for faster development cycle. Also suitable for Proof-of-Concept(PoC) projects.
+Monolithic applications are single, cohesive units with tightly integrated components running as one service. Simplifies development and deployment but creates scalability and maintainability challenges. Changes require full system redeployment. Suitable for smaller applications; larger ones often transition to microservices.
 
 Visit the following resources to learn more:
 
 - [@article@Pattern: Monolithic Architecture](https://microservices.io/patterns/monolithic.html)
 - [@article@Monolithic Architecture - Advantages & Disadvantages](https://datamify.medium.com/monolithic-architecture-advantages-and-disadvantages-e71a603eec89)
+- [@video@Monolithic vs Microservice Architecture](https://www.youtube.com/watch?v=NdeTGlZ__Do)

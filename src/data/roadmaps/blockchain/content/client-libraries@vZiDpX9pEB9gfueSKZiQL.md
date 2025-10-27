@@ -4,4 +4,5 @@ You don't need to write every smart contract in your project from scratch. There
 
 Visit the following resources to learn more:
 
-- [@official@Viem library with great TypeScript support](https://viem.sh)
+- [@official@Viem Library](https://viem.sh)
+- [@article@Client Libraries](https://docs.waves.tech/en/building-apps/waves-api-and-sdk/client-libraries/)

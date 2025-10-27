@@ -1,13 +1,11 @@
 # DNS
 
-The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
+DNS (Domain Name System) translates human-readable domain names into IP addresses. Uses hierarchical structure with root servers, TLD servers (.com, .org), authoritative servers, and local DNS servers. Essential for internet functionality, enabling memorable names instead of IP addresses.
 
 Visit the following resources to learn more:
 
+- [@article@Everything You Need to Know About DNS](https://cs.fyi/guide/everything-you-need-to-know-about-dns)
 - [@article@What is DNS?](https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/)
 - [@article@How DNS works (comic)](https://howdns.works/)
-- [@article@Understanding Domain names](https://developer.mozilla.org/en-US/docs/Glossary/DNS/)
 - [@video@DNS and How does it Work?](https://www.youtube.com/watch?v=Wj0od2ag5sk)
-- [@video@DNS Records](https://www.youtube.com/watch?v=7lxgpKh_fRY)
-- [@video@Complete DNS mini-series](https://www.youtube.com/watch?v=zEmUuNFBgN8\&list=PLTk5ZYSbd9MhMmOiPhfRJNW7bhxHo4q-K)
 - [@feed@Explore top posts about DNS](https://app.daily.dev/tags/dns?ref=roadmapsh)

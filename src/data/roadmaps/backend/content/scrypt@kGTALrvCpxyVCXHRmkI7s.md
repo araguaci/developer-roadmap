@@ -1,7 +1,9 @@
 # Scrypt
 
-Scrypt (pronounced "ess crypt") is a password hashing function (like bcrypt). It is designed to use a lot of hardware, which makes brute-force attacks more difficult. Scrypt is mainly used as a proof-of-work algorithm for cryptocurrencies.
+scrypt is a memory-hard key derivation function designed to resist brute-force and hardware-based attacks (GPUs, ASICs). Combines hash functions with high memory usage and CPU-intensive computation, making large-scale attacks costly and impractical. Used for secure password storage and cryptocurrency mining.
 
 Visit the following resources to learn more:
 
-- [@article@Wikipedia - Scrypt](https://en.wikipedia.org/wiki/Scrypt)
+- [@official@sCrypt Website](https://scrypt.io/)
+- [@article@sCrypt: A Beginner’s Guide](https://medium.com/@yusufedresmaina/scrypt-a-beginners-guide-cf1aecf8b010)
+- [@article@Wikipedia - scrypt](https://en.wikipedia.org/wiki/Scrypt)

@@ -1,5 +1,8 @@
 # Caching
 
-Caching is a technique of storing frequently used data or results of complex computations in a local memory, for a certain period. So, next time, when the client requests the same information, instead of retrieving the information from the database, it will give the information from the local memory. The main advantage of caching is that it improves performance by reducing the processing burden.
+Caching stores frequently accessed data in faster locations to improve performance by reducing latency and server load. It operates at browser, application, and database levels using strategies like LRU and time-based expiration. Balances speed gains with data consistency challenges.
 
-NB! Caching is a complicated topic that has obvious benefits but can lead to pitfalls like stale data, cache invalidation, distributed caching etc
+Visit the following resources to learn more:
+
+- [@article@What is Caching - AWS](https://aws.amazon.com/caching/)
+- [@article@Caching - Cloudflare](https://www.cloudflare.com/learning/cdn/what-is-caching/)

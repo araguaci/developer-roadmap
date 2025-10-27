@@ -1,7 +1,8 @@
 # Cookie-Based Authentication
 
-Cookies are pieces of data used to identify the user and their preferences. The browser returns the cookie to the server every time the page is requested. Specific cookies like HTTP cookies are used to perform cookie-based authentication to maintain the session for each user.
+Cookie-based authentication maintains user sessions by storing session IDs in browser cookies. Server stores session data and uses cookies as keys. Simple to implement and browser-native, but vulnerable to CSRF attacks and challenging for cross-origin requests.
 
 Visit the following resources to learn more:
 
 - [@article@How does cookie based authentication work?](https://stackoverflow.com/questions/17769011/how-does-cookie-based-authentication-work)
+- [@video@Session vs Token Authentication in 100 Seconds](https://www.youtube.com/watch?v=UBUNrFtufWo)

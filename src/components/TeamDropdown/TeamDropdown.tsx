@@ -32,24 +32,6 @@ export function TeamDropdown() {
   const user = useAuth();
   const { teamId } = useTeamId();
 
-  const [shouldShowTeamsIndicator, setShouldShowTeamsIndicator] =
-    useState(false);
-
-  useEffect(() => {
-    // Show team dropdown "New" indicator to first 3 refreshes
-    const viewedTeamsCount = localStorage.getItem('viewedTeamsCount');
-    const viewedTeamsCountNumber = parseInt(viewedTeamsCount || '0', 10);
-    const shouldShowTeamIndicator = viewedTeamsCountNumber < 5;
-
-    setShouldShowTeamsIndicator(shouldShowTeamIndicator);
-    if (shouldShowTeamIndicator) {
-      localStorage.setItem(
-        'viewedTeamsCount',
-        (viewedTeamsCountNumber + 1).toString(),
-      );
-    }
-  }, []);
-
   const teamList = useStore($teamList);
   const currentTeam = useStore($currentTeam);
 
@@ -102,18 +84,9 @@ export function TeamDropdown() {
       <div className="relative mr-2">
         <span className="mb-2 flex items-center justify-between text-xs uppercase text-gray-400">
           <span>Choose Team</span>
-
-          {shouldShowTeamsIndicator && (
-            <span className="mr-1 inline-flex h-1 w-1 items-center justify-center font-medium text-blue-300">
-              <span className="relative flex items-center">
-                <span className="relative rounded-full bg-gray-200 p-1 text-xs" />
-                <span className="absolute bottom-0 left-0 right-0 top-0 animate-ping rounded-full bg-gray-400 p-1 text-xs" />
-              </span>
-            </span>
-          )}
         </span>
         <button
-          className="relative flex w-full cursor-pointer items-center justify-between rounded border p-2 text-sm hover:bg-gray-100"
+          className="relative flex w-full cursor-pointer items-center justify-between rounded-sm border p-2 text-sm hover:bg-gray-100"
           onClick={() => setShowDropdown(!showDropdown)}
         >
           {pendingTeamIds.length > 0 && (
@@ -130,7 +103,7 @@ export function TeamDropdown() {
                     ? `${
                         import.meta.env.PUBLIC_AVATAR_BASE_URL
                       }/${selectedAvatar}`
-                    : '/images/default-avatar.png'
+                    : '/img/default-avatar.png'
                 }
                 alt=""
                 className="h-4 w-4 rounded-full object-cover"
@@ -152,7 +125,7 @@ export function TeamDropdown() {
             <ul>
               <li>
                 <a
-                  className="flex w-full cursor-pointer items-center gap-2 truncate rounded p-2 text-sm font-medium text-slate-100 hover:bg-slate-700"
+                  className="flex w-full cursor-pointer items-center gap-2 truncate rounded-sm p-2 text-sm font-medium text-slate-100 hover:bg-slate-700"
                   href="/account"
                 >
                   <span className="truncate">Personal Account</span>
@@ -169,10 +142,10 @@ export function TeamDropdown() {
                 return (
                   <li key={team?._id}>
                     <a
-                      className="flex w-full cursor-pointer items-center gap-2 rounded p-2 text-sm font-medium text-slate-100 hover:bg-slate-700"
+                      className="flex w-full cursor-pointer items-center gap-2 rounded-sm p-2 text-sm font-medium text-slate-100 hover:bg-slate-700"
                       href={`${pageLink}`}
                     >
-                      <span className="min-w-0 flex-grow truncate">
+                      <span className="min-w-0 grow truncate">
                         {team.name}
                       </span>
                       {pendingTeamIds.includes(team._id) && (
@@ -186,7 +159,7 @@ export function TeamDropdown() {
               })}
             </ul>
             <a
-              className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded bg-gray-100 p-2 text-sm font-medium text-slate-800 hover:opacity-90"
+              className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-gray-100 p-2 text-sm font-medium text-slate-800 hover:opacity-90"
               href="/team/new"
             >
               <span>+</span>

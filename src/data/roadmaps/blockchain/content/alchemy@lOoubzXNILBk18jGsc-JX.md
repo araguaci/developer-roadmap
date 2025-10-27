@@ -4,4 +4,5 @@ Alchemy is a developer platform that empowers companies to build scalable and re
 
 Visit the following resources to learn more:
 
-- [@official@Alchemy official site](https://www.alchemy.com/)
+- [@official@Alchemy](https://www.alchemy.com/)
+- [@video@Cyfrin Updraft | Introduction to Alchemy](https://updraft.cyfrin.io/courses/foundry/foundry-simple-storage/introduction-to-alchemy)

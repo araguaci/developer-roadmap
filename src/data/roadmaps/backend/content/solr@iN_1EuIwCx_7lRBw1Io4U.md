@@ -1,8 +1,10 @@
 # Solr
 
-Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.
+Solr is an open-source, scalable search platform built on Apache Lucene for full-text search, faceted search, and real-time indexing. Supports complex queries, distributed searching, text analysis, highlighting, and geographic search. Used for search engines and data retrieval systems.
 
 Visit the following resources to learn more:
 
-- [@article@Official Website](https://solr.apache.org/)
-- [@article@Official Documentation](https://solr.apache.org/resources.html#documentation)
+- [@opensource@Solr on GitHub](https://github.com/apache/solr)
+- [@article@Solr Website](https://solr.apache.org/)
+- [@article@Solr Documentation](https://solr.apache.org/resources.html#documentation)
+- [@video@Apache Solr vs Elasticsearch Differences](https://www.youtube.com/watch?v=MMWBdSdbu5k)

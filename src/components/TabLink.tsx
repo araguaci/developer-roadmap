@@ -4,11 +4,13 @@ import { cn } from '../lib/classname.ts';
 type TabLinkProps = {
   icon: LucideIcon;
   text: string;
+  mobileText?: string;
   isActive: boolean;
   isExternal?: boolean;
   badgeText?: string;
   hideTextOnMobile?: boolean;
   url: string;
+  className?: string;
 };
 
 export function TabLink(props: TabLinkProps) {
@@ -18,8 +20,10 @@ export function TabLink(props: TabLinkProps) {
     isExternal = false,
     url,
     text,
+    mobileText,
     isActive,
     hideTextOnMobile = false,
+    className: additionalClassName = '',
   } = props;
 
   const className = cn(
@@ -30,6 +34,7 @@ export function TabLink(props: TabLinkProps) {
         !isActive,
       'font-medium hover:text-black text-gray-500 px-0': isExternal,
     },
+    additionalClassName,
   );
 
   const textClass = cn({
@@ -37,7 +42,17 @@ export function TabLink(props: TabLinkProps) {
   });
 
   const badgeNode = badgeText && (
-    <span className="ml-0.5 hidden items-center gap-0.5 rounded-full bg-yellow-200 px-2 py-0.5 text-xs font-medium text-black transition-colors group-hover:bg-yellow-300 sm:flex">
+    <span
+      className={cn(
+        'ml-0.5 hidden items-center gap-0.5 rounded-full bg-yellow-200 px-2 py-0.5 text-xs font-medium text-black transition-colors sm:flex',
+        {
+          'bg-gray-200 text-black group-hover:bg-gray-300':
+            badgeText?.toLowerCase() == 'soon',
+          'bg-yellow-200 text-black group-hover:bg-yellow-300':
+            badgeText?.toLowerCase() == 'new',
+        },
+      )}
+    >
       <span className="relative -top-px">{badgeText}</span>
     </span>
   );
@@ -45,7 +60,7 @@ export function TabLink(props: TabLinkProps) {
   if (isActive) {
     return (
       <span className={className}>
-        <Icon className="h-4 w-4 flex-shrink-0" />
+        <Icon className="h-4 w-4 shrink-0" />
         <span className={textClass}>{text}</span>
         {badgeNode}
       </span>
@@ -61,8 +76,9 @@ export function TabLink(props: TabLinkProps) {
       href={url}
       className={className}
     >
-      <Icon className="h-4 w-4 flex-shrink-0" />
-      <span className={textClass}>{text}</span>
+      <Icon className="h-4 w-4 shrink-0" />
+      <span className={cn(textClass, 'hidden sm:inline')}>{text}</span>
+      <span className={cn(textClass, 'inline sm:hidden')}>{mobileText || text}</span>
       {badgeNode}
     </a>
   );

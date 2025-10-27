@@ -1,7 +1,8 @@
 # Client Side Caching
 
-Client-side caching is the storage of network data to a local cache for future re-use. After an application fetches network data, it stores that resource in a local cache. Once a resource has been cached, the browser uses the cache on future requests for that resource to boost performance.
+Client-side caching stores data locally on user devices to improve performance and reduce server load. Uses HTTP caching headers, service workers, and local storage APIs. Reduces network traffic and load times but requires careful cache invalidation strategies.
 
 Visit the following resources to learn more:
 
+- [@article@Client Side Caching](https://redis.io/docs/latest/develop/use/client-side-caching/)
 - [@video@Everything you need to know about HTTP Caching](https://www.youtube.com/watch?v=HiBDZgTNpXY)
